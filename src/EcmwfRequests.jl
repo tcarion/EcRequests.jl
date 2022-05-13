@@ -112,6 +112,7 @@ end
 
 function writeyaml(dest::String, req) 
     YAML.write_file(dest, req)
+    dest
 end
 
 function writeraw(dest::String, req)
@@ -121,7 +122,7 @@ function writeraw(dest::String, req)
             write(io, line)
         end
     end
-    filename
+    dest
 end
 
 _format_target(target) = replace(target, "\"" => "") 
@@ -130,7 +131,7 @@ _format_target(target) = replace(target, "\"" => "")
     writereq(dest::String, req)
 
 Write the request `req` to the file specified by `dest`. If `dest` has the `.yaml` extension, it's written in YAML format.
-If not, the native mars syntax is used.
+If not, the native mars syntax is used. Return `dest`.
 """
 function writereq(dest::String, req)
     if _isyaml(dest)
@@ -138,6 +139,7 @@ function writereq(dest::String, req)
     else
         writeraw(dest, req)
     end
+    dest
 end
 
 function format(req)::Vector{String}
