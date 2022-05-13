@@ -1,0 +1,12 @@
+retrieve,
+   stream=oper,
+   levtype=sfc,
+   param=165.128/41.128,
+   dataset=interim,
+   step=0,
+   grid=0.75/0.75,
+   time=00,
+   date=2013-09-01/to/2013-09-30,
+   type=an,
+   class=ei,
+   target="interim_2013-09-01to2013-09-30_00.grib"
