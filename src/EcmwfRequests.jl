@@ -78,7 +78,7 @@ end
 """
     EcmwfRequest(filename::String)
 
-Read the file `filename` and parse the content as a `$MarsRequestType`. `filename` can be in YAML format or in native mars syntax format.
+Read the file `filename` and parse the content as a `$EcmwfRequestType`. `filename` can be in YAML format or in native mars syntax format.
 """
 function EcmwfRequest(filename::String)
     if _isyaml(filename)
