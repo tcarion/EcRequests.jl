@@ -10,6 +10,9 @@ YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
 
 [compat]
 julia = "1"
+YAML = "0.4.7"
+PyCall = "1.93.1"
+DataStructures = "0.18.13"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
