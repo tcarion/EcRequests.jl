@@ -19,7 +19,7 @@ function __init__()
     import ssl
     ssl._create_default_https_context = ssl._create_unverified_context
     """
-    copy!(ecmwfapi, pyimport_conda("ecmwfapi", "ecmwfapi", "conda-forge"))
+    copy!(ecmwfapi, pyimport_conda("ecmwfapi", "ecmwf-api-client", "conda-forge"))
     copy!(ecmwf_public_server, ecmwfapi.ECMWFDataServer())
     copy!(ecmwf_mars_server, ecmwfapi.ECMWFService("mars"))
 
