@@ -5,7 +5,8 @@ testfiles = joinpath(@__DIR__, "files")
 raw_req = joinpath(testfiles, "testreq.req")
 yaml_req = joinpath(testfiles, "testreq.yaml")
 
-newreq_path = "newreq.yaml"
+newreq_yaml = "newreq.yaml"
+newreq_raw = "newreq"
 
 @testset "EcRequests.jl" begin
     # Write your tests here.
@@ -20,14 +21,24 @@ newreq_path = "newreq.yaml"
 
     area = "52/4/48/8"
     req1["area"] = area
-    EcRequests.writereq(newreq_path, req1)
 
-    newreq = EcRequest(newreq_path)
-    @test newreq["area"] == area
+    mktempdir() do dir
+        newreq_yaml_path = joinpath(dir, newreq_yaml)
+        newreq_raw_path = joinpath(dir, newreq_raw)
+        EcRequests.writereq(newreq_yaml_path, req1)
+        EcRequests.writereq(newreq_raw_path, req1)
+        @test readlines(newreq_yaml_path)[1] == "stream: \"oper\""
+        @test readlines(newreq_raw_path)[1] == "retrieve,"
+
+        newreq = EcRequest(newreq_yaml_path)
+        @test newreq["area"] == area
+    end
+
+
 
     req3 = EcRequest("stream" => "oper")
     @test req3["stream"] == "oper"
+
     # EcRequests.runmars(newreq)
-    rm(newreq_path)
     # rm(strip(newreq["target"], '\"'))
 end

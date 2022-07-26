@@ -126,7 +126,7 @@ end
 
 function writeraw(dest::String, req)
     open(dest, "w") do io
-        write(io, "retrieve,\n")
+        # write(io, "retrieve,\n")
         for line in format(req)
             write(io, line)
         end
@@ -152,9 +152,9 @@ function writereq(dest::String, req)
 end
 
 function format(req)::Vector{String}
-    str = ["retrieve,"]
+    str = ["retrieve,\n"]
     for (name, value) in req
-        line = "$name=$value,"
+        line = "$name=$value,\n"
         push!(str, line)
     end
     str[end] = strip(str[end], ',')
