@@ -1,10 +1,10 @@
-module EcmwfRequests
+module EcRequests
 
 using PyCall
 using DataStructures: OrderedDict
 using YAML
 
-export EcmwfRequest, EcmwfRequestType
+export EcRequest, EcRequestType
 
 const ecmwfapi = PyNULL()
 const ecmwf_public_server = PyNULL()
@@ -45,7 +45,7 @@ function __init__()
     end
 end
 
-const EcmwfRequestType = OrderedDict{String, Any}
+const EcRequestType = OrderedDict{String, Any}
 
 function _matchline(line)
     reg = r"(.*)=([^,]*)"
@@ -58,7 +58,7 @@ end
 function _parse_from_raw(path::String)
     lines = readlines(path)
 
-    req = EcmwfRequestType()
+    req = EcRequestType()
 
     for line in lines
         m = _matchline(line)
@@ -72,15 +72,15 @@ end
 
 _isyaml(path) = splitext(path)[2] == ".yaml"
 function _parse_from_yaml(path::String)
-    YAML.load_file(path; dicttype=EcmwfRequestType)
+    YAML.load_file(path; dicttype=EcRequestType)
 end
 
 """
-    EcmwfRequest(filename::String)
+    EcRequest(filename::String)
 
-Read the file `filename` and parse the content as a `$EcmwfRequestType`. `filename` can be in YAML format or in native mars syntax format.
+Read the file `filename` and parse the content as a `$EcRequestType`. `filename` can be in YAML format or in native mars syntax format.
 """
-function EcmwfRequest(filename::String)
+function EcRequest(filename::String)
     if _isyaml(filename)
         _parse_from_yaml(filename)
     else

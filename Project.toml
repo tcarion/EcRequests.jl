@@ -1,4 +1,4 @@
-name = "EcmwfRequests"
+name = "EcRequests"
 uuid = "c0c4b1a4-92fd-414d-990e-850c1287bada"
 authors = ["tcarion <tristan.carion@gmail.com> and contributors"]
 version = "0.1.0"
