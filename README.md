@@ -2,7 +2,7 @@
 
 `EcRequests.jl` interfaces the [Ecmwf API](https://www.ecmwf.int/en/computing/software/ecmwf-web-api) to retrieve ECMWF meteorological data. It uses [PyCall.jl](https://github.com/JuliaPy/PyCall.jl) to install the needed python client.
 
-# Installation
+## Installation
 
 To install the package:
 
@@ -10,7 +10,7 @@ To install the package:
 ] add https://github.com/tcarion/EcRequests.jl
 ```
 
-# Make requests
+## Make requests
 
 To be able to make requests to the ECMWF Web API, you will first need to [create an account](https://apps.ecmwf.int/registration/) at ECMWF, and then follow the instructions to set up your API key. Then, you can create your request:
 
@@ -70,5 +70,5 @@ OrderedCollections.OrderedDict{String, Any} with 11 entries:
   "target"  => "\"interim_2013-09-01to2013-09-30_00.grib\""
 ```
 
-# Remark
+## Remark
 This package has not been developed by ECMWF people. If you're from ECMWF, don't hesitate to contact me and discuss about further improvement!
