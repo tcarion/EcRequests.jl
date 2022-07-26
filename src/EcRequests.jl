@@ -89,6 +89,15 @@ function EcRequest(filename::String)
 end
 
 """
+    EcRequest(pairs::Vararg{Pair})
+
+Create a `$EcRequestType` from the `pairs`.
+"""
+function EcRequest(pairs::Vararg{Pair})
+    EcRequestType(pairs...)
+end
+
+"""
     runmars(req)
 
 Run the request with the ecmwf client.
