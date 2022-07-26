@@ -12,5 +12,5 @@ makedocs(
 # for more information.
 
 deploydocs(
-    repo = "https://github.com/tcarion/EcRequests.jl.git"
+    repo = "github.com/tcarion/EcRequests.jl.git"
 )
