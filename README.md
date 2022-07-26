@@ -1,5 +1,10 @@
 # EcRequests
 
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://tcarion.github.io/EcRequests.jl/stable/)
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://tcarion.github.io/EcRequests.jl/dev/)
+[![Build Status](https://github.com/tcarion/EcRequests.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/tcarion/EcRequests.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Coverage](https://codecov.io/gh/tcarion/EcRequests.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/tcarion/EcRequests.jl)
+
 `EcRequests.jl` interfaces the [Ecmwf API](https://www.ecmwf.int/en/computing/software/ecmwf-web-api) to retrieve ECMWF meteorological data. It uses [PyCall.jl](https://github.com/JuliaPy/PyCall.jl) to install the needed python client.
 
 ## Installation
