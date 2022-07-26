@@ -1,7 +1,7 @@
 using EcRequests
 using Test
 
-testfiles = joinpath(@__DIR__, "test")
+testfiles = joinpath(@__DIR__, "files")
 raw_req = joinpath(testfiles, "testreq.req")
 yaml_req = joinpath(testfiles, "testreq.yaml")
 
@@ -23,7 +23,11 @@ newreq_path = "newreq.yaml"
     EcRequests.writereq(newreq_path, req1)
 
     newreq = EcRequest(newreq_path)
-    EcRequests.runmars(newreq)
+    @test newreq["area"] == area
+
+    req3 = EcRequest("stream" => "oper")
+    @test req3["stream"] == "oper"
+    # EcRequests.runmars(newreq)
     rm(newreq_path)
-    rm(strip(newreq["target"], '\"'))
+    # rm(strip(newreq["target"], '\"'))
 end
