@@ -1,8 +1,9 @@
 using EcRequests
 using Test
 
-raw_req = "testreq.req"
-yaml_req = "testreq.yaml"
+testfiles = joinpath(@__DIR__, "test")
+raw_req = joinpath(testfiles, "testreq.req")
+yaml_req = joinpath(testfiles, "testreq.yaml")
 
 newreq_path = "newreq.yaml"
 
