@@ -10,8 +10,8 @@ const ecmwfapi = PyNULL()
 const ecmwf_public_server = PyNULL()
 const ecmwf_mars_server = PyNULL()
 
-const polytopeapi = PyNULL()
-const polytope_client = PyNULL()
+# const polytopeapi = PyNULL()
+# const polytope_client = PyNULL()
 
 function __init__()
     # ecmwfapi won't be able to access mars servers if ssl certification is not deactivated. See https://github.com/JuliaPy/PyCall.jl/issues/987
@@ -24,25 +24,25 @@ function __init__()
     copy!(ecmwf_mars_server, ecmwfapi.ECMWFService("mars"))
 
     # Try to import the optional polytope-client package
-    try
-        copy!(polytopeapi, pyimport_conda("polytope.api", "polytope-client", "conda-forge"))
-        copy!(polytope_client, polytopeapi.Client(address = "polytope.ecmwf.int"))
-        try
-            # Would be better to simply redirect stdout to devnull, but it doesn't work
-            tmp_cli = polytopeapi.Client(address = "polytope.ecmwf.int", quiet = true)
-            # redirect_stdout(devnull) do 
-            tmp_cli.list_collections()
-            # end
-        catch e
-            if e isa PyCall.PyError
-                @warn "It seems you don't have credentials for the polytope api."
-            else
-                throw(e)
-            end
-        end
-    catch
+    # try
+    #     copy!(polytopeapi, pyimport_conda("polytope.api", "polytope-client", "conda-forge"))
+    #     copy!(polytope_client, polytopeapi.Client(address = "polytope.ecmwf.int"))
+    #     try
+    #         # Would be better to simply redirect stdout to devnull, but it doesn't work
+    #         tmp_cli = polytopeapi.Client(address = "polytope.ecmwf.int", quiet = true)
+    #         # redirect_stdout(devnull) do 
+    #         tmp_cli.list_collections()
+    #         # end
+    #     catch e
+    #         if e isa PyCall.PyError
+    #             @warn "It seems you don't have credentials for the polytope api."
+    #         else
+    #             throw(e)
+    #         end
+    #     end
+    # catch
 
-    end
+    # end
 end
 
 const EcRequestType = OrderedDict{String, Any}
@@ -115,9 +115,9 @@ end
 
 Run the request with the polytope client.
 """
-function runpolytope(req)
-    polytope_client.retrieve("ecmwf-mars", req, _format_target(req["target"]))
-end
+# function runpolytope(req)
+#     polytope_client.retrieve("ecmwf-mars", req, _format_target(req["target"]))
+# end
 
 function writeyaml(dest::String, req) 
     YAML.write_file(dest, req)
