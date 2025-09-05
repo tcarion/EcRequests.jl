@@ -12,7 +12,7 @@
 To install the package:
 
 ```julia
-] add https://github.com/PrzPaul/EcRequests.jl
+] add https://github.com/tcarion/EcRequests.jl
 ```
 
 ## Make requests
