@@ -104,7 +104,7 @@ Run the request with the ecmwf client.
 """
 function runmars(req)
     if !haskey(req, :dataset) || occursin("None", req["dataset"])
-        ecmwf_mars_server.execute(req, _format_target(req["target"]))
+        ecmwf_mars_server.execute(_rm_target(req), _format_target(req["target"]))
     else
         ecmwf_public_server.retrieve(req)
     end
@@ -134,6 +134,7 @@ function writeraw(dest::String, req)
     dest
 end
 
+_rm_target(request) = filter(kv -> kv.first != "target", request)
 _format_target(target) = replace(target, "\"" => "") 
 
 """
